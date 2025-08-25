@@ -1,0 +1,66 @@
+<div class="row w-100 g-3">
+    <!-- Left hand card (standalone) -->
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <div class="card shadow-sm h-100">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Application Dependencies Diagram</h4>
+            </div>
+            <div class="card-body">
+                <!-- No Mermaid diagram for dependencies, but you could add one if desired -->
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <span class="badge bg-primary rounded-pill me-2">Starter</span>
+                        <span class="fw-bold">Spring Boot Starter Web:</span> For building web applications with Spring MVC.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge bg-primary rounded-pill me-2">Starter</span>
+                        <span class="fw-bold">Spring Boot Starter Data JPA:</span> For JPA support and database interaction.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge bg-primary rounded-pill me-2">Starter</span>
+                        <span class="fw-bold">Spring Boot Starter JDBC:</span> For using the JDBC API with Spring.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge bg-secondary rounded-pill me-2">Database</span>
+                        <span class="fw-bold">H2 Database:</span> An in-memory database for development and testing.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge bg-info rounded-pill me-2">Utility</span>
+                        <span class="fw-bold">Commons CSV:</span> For handling CSV file operations.
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge bg-info rounded-pill me-2">Utility</span>
+                        <span class="fw-bold">Lombok:</span> Reduces boilerplate code (e.g., getters and setters).
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right hand card (divided into two sections) -->
+    <div class="col-12 col-md-6 d-flex flex-column">
+        <!-- Top section of the right card -->
+        <div class="card shadow-sm mb-3 flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Application Dependencies</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    This list summarizes the main dependencies found in the project's <code>pom.xml</code> file, which are essential for its functionality.
+                </p>
+            </div>
+        </div>
+        <!-- Bottom section of the right card -->
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Relevant Information</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters" target="_blank">Spring Boot Starters Guide</a></li>
+                    <li class="mb-2"><a href="https://mvnrepository.com/artifact/org.projectlombok/lombok" target="_blank">Lombok on Maven Repository</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

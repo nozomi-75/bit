@@ -1,0 +1,51 @@
+<div class="row w-100 g-3">
+    <!-- Left hand card (standalone) -->
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <div class="card shadow-sm h-100">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Database Schema Diagram</h4>
+            </div>
+            <div class="card-body">
+                <!-- Mermaid Diagram -->
+                <div class="mermaid">
+                    erDiagram
+                        PRODUCT {
+                            long id PK
+                            string itemId
+                            string itemName
+                            int itemQty
+                            double itemPrice
+                            string itemCategory
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right hand card (divided into two sections) -->
+    <div class="col-12 col-md-6 d-flex flex-column">
+        <!-- Top section of the right card -->
+        <div class="card shadow-sm mb-3 flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">The Database Schema</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Based on the <code>Product</code> entity, this diagram represents the database table schema. It includes the primary key (<code>id</code>) and the various fields that store product information.
+                </p>
+            </div>
+        </div>
+        <!-- Bottom section of the right card -->
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Related Information</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="https://docs.oracle.com/javaee/6/api/javax/persistence/Entity.html" target="_blank">JPA Entity Documentation</a></li>
+                    <li class="mb-2"><a href="https://www.h2database.com/html/main.html" target="_blank">H2 Database Reference</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

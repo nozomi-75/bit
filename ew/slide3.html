@@ -1,0 +1,59 @@
+<div class="row w-100 g-3">
+    <!-- Left hand card (standalone) -->
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <div class="card shadow-sm h-100">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Build Process Diagram</h4>
+            </div>
+            <div class="card-body">
+                <!-- Mermaid Diagram -->
+                <div class="mermaid">
+                    flowchart TD
+                        subgraph "Build Process"
+                            A[mvnw/mvnw.cmd]:::build
+                            B[pom.xml]:::config
+                            C[Maven Plugins]:::config
+                            D[Maven Dependencies]:::config
+                            E[SokoApp.jar]:::output
+                        end
+
+                        A -->|reads| B
+                        B -->|manages| C
+                        B -->|manages| D
+                        A -->|generates| E
+
+                        classDef build fill:#D1E7DD,stroke:#28a745;
+                        classDef config fill:#F8D7DA,stroke:#DC3545;
+                        classDef output fill:#CCE5FF,stroke:#007BFF;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right hand card (divided into two sections) -->
+    <div class="col-12 col-md-6 d-flex flex-column">
+        <!-- Top section of the right card -->
+        <div class="card shadow-sm mb-3 flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">The Build Process</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    This diagram illustrates the build process. The Maven Wrapper (<code>mvnw</code>) uses the <code>pom.xml</code> file to resolve dependencies and execute plugins, ultimately generating the executable <code>SokoApp.jar</code> file.
+                </p>
+            </div>
+        </div>
+        <!-- Bottom section of the right card -->
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Related Information</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html" target="_blank">Maven in 5 Minutes</a></li>
+                    <li class="mb-2"><a href="https://spring.io/guides/gs/spring-boot-maven-plugin/" target="_blank">Spring Boot Maven Plugin</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

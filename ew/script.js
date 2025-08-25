@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // An array of slide file paths. Add more slides here as you create them.
     const slides = [
         'slide1.html',
-        'slide2.html'
+        'slide2.html',
+        'slide3.html',
+        'slide4.html',
+        'slide5.html'
     ];
     let currentSlideIndex = 0;
 
