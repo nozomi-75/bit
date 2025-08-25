@@ -11,10 +11,15 @@ body {
     height: 5px;
     background-color: #e9ecef;
     width: 100%;
-    position: fixed;
+    /* Positioned absolutely within the navbar */
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 1030; /* Place it above other content */
+}
+
+.navbar .container-fluid {
+    padding-top: 0.5rem; /* Increase as needed for more space */
 }
 
 .progress-bar {

@@ -13,11 +13,6 @@
 </head>
 <body>
     
-    <!-- Progress bar container -->
-    <div class="progress-bar-container">
-        <div id="progress-bar" class="progress-bar"></div>
-    </div>
-
     <!-- Main content area for the slides -->
     <div id="slide-container" class="container slide-container fade-in">
         <!-- The slide content will be dynamically loaded here by script.js -->
@@ -25,6 +20,11 @@
 
     <!-- Fixed bottom navigation bar -->
     <nav class="navbar navbar-expand navbar-light bg-light fixed-bottom border-top shadow-lg">
+        <!-- Progress bar container, now inside the navbar -->
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
         <div class="container-fluid">
             <!-- Left side controls -->
             <div class="d-flex gap-2">
