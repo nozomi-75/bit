@@ -1,57 +1,19 @@
-<div class="row w-100 g-3">
-    <!-- Left hand card (standalone) -->
-    <div class="col-12 col-md-6 mb-3 mb-md-0">
-        <div class="card shadow-sm h-100">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Client Layer Diagram</h4>
-            </div>
-            <div class="card-body">
-                <!-- Mermaid Diagram -->
-                <div class="mermaid">
-                    flowchart TB
 
-                    subgraph "Client Layer"
-                      StaticAssets["Static Assets<br/>(index.html, main.js, print.css,<br/>manifest.json, sw.js)"]:::frontend
-                    end
-                    BrowserUI["Browser (SPA UI)"]:::frontend
-                    BrowserAPI["Browser (API Requests)"]:::frontend
-
-                    BrowserUI -->|"loads"| StaticAssets
-                    BrowserAPI -->|"HTTP GET/POST /api/products"| ServerLayer["Server Layer"]
-                    
-                    style StaticAssets fill:#E0F7FA,stroke:#007BFF
-                    style BrowserUI fill:#E0F7FA,stroke:#007BFF
-                    style BrowserAPI fill:#E0F7FA,stroke:#007BFF
-                </div>
+<div class="row w-100 justify-content-center align-items-center">
+    <div class="col-12 col-md-8">
+        <div class="card shadow-sm text-center py-5 px-3">
+            <div class="mb-4">
+                <img src="../favicon.svg" alt="Sōko Logo" width="80" height="66" class="mb-3">
+                <h1 class="display-5 fw-bold mb-2">Sōko Inventory</h1>
+                <p class="lead text-muted mb-3">A simple, full-stack inventory web application</p>
             </div>
-        </div>
-    </div>
-
-    <!-- Right hand card (divided into two sections) -->
-    <div class="col-12 col-md-6 d-flex flex-column">
-        <!-- Top section of the right card -->
-        <div class="card shadow-sm mb-3 flex-grow-1">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">The Client Layer</h4>
+            <div class="mb-4">
+                <span class="badge bg-primary fs-6 mx-1">Spring Boot</span>
+                <span class="badge bg-success fs-6 mx-1">JavaScript</span>
+                <span class="badge bg-info text-dark fs-6 mx-1">Bootstrap 5</span>
+                <span class="badge bg-secondary fs-6 mx-1">H2 Database</span>
             </div>
-            <div class="card-body">
-                <p class="card-text">
-                    This section provides an overview of the Client Layer.
-                    This layer represents the user-facing part of the application. It's responsible for displaying the user interface (UI) and for communicating with the server to fetch and send data. The main components are the browser's UI and API interaction, as well as the static assets that are served to the browser.
-                </p>
-            </div>
-        </div>
-        <!-- Bottom section of the right card -->
-        <div class="card shadow-sm flex-grow-1">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Related Information</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><b>Static Assets</b>: <a href="https://github.com/nozomi-75/soko/tree/main/src/main/resources/static">Static Assets Folder</a></li>
-                    <li class="mb-2"><b>Connection to Server</b>: The browser's API calls interact with the Server Layer to retrieve product data.</li>
-                </ul>
-            </div>
+            <footer class="text-muted small mt-4">倉庫 means "warehouse" in Japanese</footer>
         </div>
     </div>
 </div>
