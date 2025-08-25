@@ -1,58 +1,62 @@
 <div class="row w-100 g-3">
-    <!-- Left hand card (standalone) -->
     <div class="col-12 col-md-6 mb-3 mb-md-0">
         <div class="card shadow-sm h-100">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Build Process Diagram</h4>
+                <h4 class="card-title my-2 fw-bold">Core Features</h4>
             </div>
             <div class="card-body">
-                <!-- Mermaid Diagram -->
-                <div class="mermaid">
-                    flowchart TD
-                        subgraph "Build Process"
-                            A[mvnw/mvnw.cmd]:::build
-                            B[pom.xml]:::config
-                            C[Maven Plugins]:::config
-                            D[Maven Dependencies]:::config
-                            E[SokoApp.jar]:::output
-                        end
-
-                        A -->|reads| B
-                        B -->|manages| C
-                        B -->|manages| D
-                        A -->|generates| E
-
-                        classDef build fill:#D1E7DD,stroke:#28a745;
-                        classDef config fill:#F8D7DA,stroke:#DC3545;
-                        classDef output fill:#CCE5FF,stroke:#007BFF;
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-eye me-2 text-primary"></i>View Products</div>
+                        <p class="mb-0">Retrieve and display a complete list of all products from the backend with a single API call.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-plus-circle me-2 text-success"></i>Add Products</div>
+                        <p class="mb-0">Create new product entries via a dynamic form, which sends a <code>POST</code> request to the API.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-pencil-square me-2 text-warning"></i>Update Products</div>
+                        <p class="mb-0">Modify existing product details by sending <code>PUT</code> requests to the API, all while ensuring data consistency.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-trash me-2 text-danger"></i>Delete Products</div>
+                        <p class="mb-0">Remove products from the inventory by sending a <code>DELETE</code> request to the server, handled with a confirmation modal for user experience.</p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- Right hand card (divided into two sections) -->
     <div class="col-12 col-md-6 d-flex flex-column">
-        <!-- Top section of the right card -->
         <div class="card shadow-sm mb-3 flex-grow-1">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">The Build Process</h4>
+                <h4 class="card-title my-2 fw-bold">Enhanced Functionality</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-search me-2"></i>Dynamic Search</div>
+                        <p class="mb-0">Query the product list as you type and filter results in real-time.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-arrow-down-up me-2"></i>Sorting & Filtering</div>
+                        <p class="mb-0">Reorder products and filter by category with seamless integration.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-phone me-2"></i>Mobile-First Design</div>
+                        <p class="mb-0">Responsive interface, so you have a great experience on any device.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Project Architecture</h4>
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    This diagram illustrates the build process. The Maven Wrapper (<code>mvnw</code>) uses the <code>pom.xml</code> file to resolve dependencies and execute plugins, ultimately generating the executable <code>SokoApp.jar</code> file.
+                    Sōko demonstrates a simple <strong>full-stack architecture</strong>. Using <strong>Spring Boot</strong>, it exposes a RESTful API that handles all business logic and data persistence. Users can make full use of this with an intuitive frontend built on Vanilla JS and Bootstrap 5.
                 </p>
-            </div>
-        </div>
-        <!-- Bottom section of the right card -->
-        <div class="card shadow-sm flex-grow-1">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Related Information</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html" target="_blank">Maven in 5 Minutes</a></li>
-                    <li class="mb-2"><a href="https://spring.io/guides/gs/spring-boot-maven-plugin/" target="_blank">Spring Boot Maven Plugin</a></li>
-                </ul>
             </div>
         </div>
     </div>
