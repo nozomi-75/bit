@@ -1,50 +1,81 @@
 <div class="row w-100 g-3">
-    <!-- Left hand card (standalone) -->
     <div class="col-12 col-md-6 mb-3 mb-md-0">
         <div class="card shadow-sm h-100">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Static Assets Diagram</h4>
+                <h4 class="card-title my-2 fw-bold">Server Layer Diagram</h4>
             </div>
             <div class="card-body">
-                <!-- Mermaid Diagram -->
                 <div class="mermaid">
-                    flowchart TD
-                        subgraph "Static Assets"
-                            direction LR
-                            A[index.html]
-                            B[main.js]
-                            C[print.css]
-                            D[manifest.json]
-                            E[sw.js]
-                        end
-                    A --> B & C & D & E
+                    flowchart TB
+                    
+                    subgraph "Server Layer"
+                      SokoApp["SokoApplication"]:::server
+                    
+                      subgraph "Controller Layer"
+                        Controller["ProductController"]:::server
+                      end
+                    
+                      subgraph "Service Layer"
+                        ProdService["ProductService"]:::server
+                        CsvService["CsvExportService"]:::server
+                      end
+                    
+                      subgraph "Repository Layer"
+                        Repository["ProductRepository"]:::server
+                      end
+                    
+                      Model["Product Entity"]:::server
+                    end
+                    
+                    style SokoApp fill:#E9FBEA,stroke:#28a745
+                    style Controller fill:#E9FBEA,stroke:#28a745
+                    style ProdService fill:#E9FBEA,stroke:#28a745
+                    style CsvService fill:#E9FBEA,stroke:#28a745
+                    style Repository fill:#E9FBEA,stroke:#28a745
+                    style Model fill:#E9FBEA,stroke:#28a745
+                    
+                    Controller -->|"calls"| ProdService
+                    Controller -->|"export CSV"| CsvService
+                    ProdService -->|"queries"| Repository
+                    CsvService -->|"queries"| Repository
+                    Repository -->|"persists/reads"| Database["Database"]
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Right hand card (divided into two sections) -->
     <div class="col-12 col-md-6 d-flex flex-column">
-        <!-- Top section of the right card -->
         <div class="card shadow-sm mb-3 flex-grow-1">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Static Assets</h4>
+                <h4 class="card-title my-2 fw-bold">The Server Layer</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    This diagram provides an overview of the static assets that make up the client-side of the application. These files are directly served to the user's browser and handle the user interface, business logic, and presentation.
-                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-router-fill me-2 text-success"></i>Controller Layer</div>
+                        <p class="mb-0">This layer serves as the <strong>API endpoint</strong>. The <code>ProductController</code> receives all incoming HTTP requests and delegates them to the appropriate service layer components.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-cpu-fill me-2 text-info"></i>Service Layer</div>
+                        <p class="mb-0">The service layer contains the <strong>core business logic</strong> of the application. The <code>ProductService</code> handles product operations, while the <code>CsvExportService</code> manages the data export functionality.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-database-fill-lock me-2 text-danger"></i>Repository Layer</div>
+                        <p class="mb-0">The <code>ProductRepository</code> uses <strong>Spring Data JPA</strong> to handle all interactions with the database, while abstracting away the complexities of low-level SQL queries.</p>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- Bottom section of the right card -->
-        <div class="card shadow-sm flex-grow-1">
+        <div class="card shadow-sm flex-grow-1 mt-3">
             <div class="card-header card-header-bordered">
                 <h4 class="card-title my-2 fw-bold">Related Information</h4>
             </div>
             <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><b>Static Assets Folder</b>: <a href="https://github.com/nozomi-75/soko/tree/main/src/main/resources/static" target="_blank">Static Assets Folder</a></li>
-                    <li class="mb-2"><b>SPA (Single-Page Application)</b>: The `index.html` file acts as the entry point for a single-page application, with the `main.js` handling all the dynamic interactions.</li>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/controller/ProductController.java" target="_blank"><code>/src/main/java/com/keiaa/soko/controller/ProductController.java</code></a></li>
+                    <li class="list-group-item"><a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/service/ProductService.java" target="_blank"><code>/src/main/java/com/keiaa/soko/service/ProductService.java</code></a></li>
+                    <li class="list-group-item"><a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/service/CsvExportService.java" target="_blank"><code>/src/main/java/com/keiaa/soko/service/CsvExportService.java</code></a></li>
+                    <li class="list-group-item"><a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/repository/ProductRepository.java" target="_blank"><code>/src/main/java/com/keiaa/soko/repository/ProductRepository.java</code></a></li>
                 </ul>
             </div>
         </div>
