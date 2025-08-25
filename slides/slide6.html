@@ -1,56 +1,62 @@
 <div class="row w-100 g-3">
-    <!-- Left hand card (standalone) -->
     <div class="col-12 col-md-6 mb-3 mb-md-0">
         <div class="card shadow-sm h-100">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">API Endpoints Diagram</h4>
+                <h4 class="card-title my-2 fw-bold">Client Layer Diagram</h4>
             </div>
             <div class="card-body">
-                <!-- Mermaid Diagram -->
                 <div class="mermaid">
-                    flowchart LR
-                        subgraph "API Endpoints"
-                            direction TB
-                            products_get("GET /api/products"):::get
-                            products_get_id("GET /api/products/{id}"):::get
-                            products_post("POST /api/products"):::post
-                            products_put("PUT /api/products/{id}"):::put
-                            products_delete("DELETE /api/products/{id}"):::delete
-                            products_category("GET /api/products/category/{category}"):::get
-                        end
+                    flowchart TB
+                    subgraph "Client Layer"
+                      StaticAssets["Static Assets<br/>(index.html, main.js, print.css,<br/>manifest.json, sw.js)"]:::frontend
+                    end
+                    BrowserUI["Browser (SPA UI)"]:::frontend
+                    BrowserAPI["Browser (API Requests)"]:::frontend
+
+                    BrowserUI -->|"loads"| StaticAssets
+                    BrowserAPI -->|"HTTP GET/POST /api/products"| ServerLayer["Server Layer"]
                     
-                        classDef get fill:#D1E7DD,stroke:#28a745
-                        classDef post fill:#CCE5FF,stroke:#007BFF
-                        classDef put fill:#FFF3E0,stroke:#fd7e14
-                        classDef delete fill:#F8D7DA,stroke:#DC3545
+                    style StaticAssets fill:#E0F7FA,stroke:#007BFF
+                    style BrowserUI fill:#E0F7FA,stroke:#007BFF
+                    style BrowserAPI fill:#E0F7FA,stroke:#007BFF
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Right hand card (divided into two sections) -->
     <div class="col-12 col-md-6 d-flex flex-column">
-        <!-- Top section of the right card -->
         <div class="card shadow-sm mb-3 flex-grow-1">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">RESTful API Endpoints</h4>
+                <h4 class="card-title my-2 fw-bold">The Client Layer</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    This diagram shows the complete set of RESTful API endpoints available in the application. These endpoints allow the client layer to perform all necessary CRUD (Create, Read, Update, Delete) operations on the product data, as well as handle specific queries.
-                </p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-person-fill me-2 text-primary"></i>User Interface (UI)</div>
+                        <p class="mb-0">This layer is the <strong>user-facing part</strong> of the application, built as a modern, responsive Single-Page Application (SPA).</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-arrow-left-right me-2 text-success"></i>API Interaction</div>
+                        <p class="mb-0">The client communicates with the backend's RESTful API through <strong>asynchronous requests</strong>, as mentioned earlier.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-file-earmark-code me-2 text-info"></i>Static Assets</div>
+                        <p class="mb-0">All client-side files are served directly to the browser. This architecture keeps the client lightweight and separates the frontend presentation from the backend business logic.</p>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- Bottom section of the right card -->
         <div class="card shadow-sm flex-grow-1">
             <div class="card-header card-header-bordered">
                 <h4 class="card-title my-2 fw-bold">Related Information</h4>
             </div>
             <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><b>Product Controller</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/controller/ProductController.java" target="_blank">ProductController.java</a></li>
-                    <li class="mb-2"><b>CRUD Operations</b>: The API allows for the full range of data manipulation, including fetching all products, getting a single product by ID, and modifying product details.</li>
-                </ul>
+                <p class="card-text">
+                    *Leave a placeholder for your links here.*
+                </p>
+                <p class="card-text">
+                    [Add your links here.]
+                </p>
             </div>
         </div>
     </div>
