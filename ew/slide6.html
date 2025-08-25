@@ -1,0 +1,57 @@
+<div class="row w-100 g-3">
+    <!-- Left hand card (standalone) -->
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <div class="card shadow-sm h-100">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">API Endpoints Diagram</h4>
+            </div>
+            <div class="card-body">
+                <!-- Mermaid Diagram -->
+                <div class="mermaid">
+                    flowchart LR
+                        subgraph "API Endpoints"
+                            direction TB
+                            products_get("GET /api/products"):::get
+                            products_get_id("GET /api/products/{id}"):::get
+                            products_post("POST /api/products"):::post
+                            products_put("PUT /api/products/{id}"):::put
+                            products_delete("DELETE /api/products/{id}"):::delete
+                            products_category("GET /api/products/category/{category}"):::get
+                        end
+                    
+                        classDef get fill:#D1E7DD,stroke:#28a745
+                        classDef post fill:#CCE5FF,stroke:#007BFF
+                        classDef put fill:#FFF3E0,stroke:#fd7e14
+                        classDef delete fill:#F8D7DA,stroke:#DC3545
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right hand card (divided into two sections) -->
+    <div class="col-12 col-md-6 d-flex flex-column">
+        <!-- Top section of the right card -->
+        <div class="card shadow-sm mb-3 flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">RESTful API Endpoints</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    This diagram shows the complete set of RESTful API endpoints available in the application. These endpoints allow the client layer to perform all necessary CRUD (Create, Read, Update, Delete) operations on the product data, as well as handle specific queries.
+                </p>
+            </div>
+        </div>
+        <!-- Bottom section of the right card -->
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Related Information</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><b>Product Controller</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/controller/ProductController.java" target="_blank">ProductController.java</a></li>
+                    <li class="mb-2"><b>CRUD Operations</b>: The API allows for the full range of data manipulation, including fetching all products, getting a single product by ID, and modifying product details.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -84,6 +84,24 @@ body {
     stroke: #fd7e14 !important; /* orange */
 }
 
+/* New styles for API endpoint diagrams */
+.mermaid .get rect {
+    fill: #D1E7DD !important; /* light green */
+    stroke: #28a745 !important; /* green */
+}
+.mermaid .post rect {
+    fill: #CCE5FF !important; /* light blue */
+    stroke: #007BFF !important; /* blue */
+}
+.mermaid .put rect {
+    fill: #FFF3E0 !important; /* light orange */
+    stroke: #fd7e14 !important; /* orange */
+}
+.mermaid .delete rect {
+    fill: #F8D7DA !important; /* light red */
+    stroke: #DC3545 !important; /* red */
+}
+
 /* Fade animation */
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;

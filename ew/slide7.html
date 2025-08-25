@@ -1,0 +1,52 @@
+<div class="row w-100 g-3">
+    <!-- Left hand card (standalone) -->
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <div class="card shadow-sm h-100">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Static Assets Diagram</h4>
+            </div>
+            <div class="card-body">
+                <!-- Mermaid Diagram -->
+                <div class="mermaid">
+                    flowchart TD
+                        subgraph "Static Assets"
+                            direction LR
+                            A[index.html]
+                            B[main.js]
+                            C[print.css]
+                            D[manifest.json]
+                            E[sw.js]
+                        end
+                    A --> B & C & D & E
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right hand card (divided into two sections) -->
+    <div class="col-12 col-md-6 d-flex flex-column">
+        <!-- Top section of the right card -->
+        <div class="card shadow-sm mb-3 flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Static Assets</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    This diagram provides an overview of the static assets that make up the client-side of the application. These files are directly served to the user's browser and handle the user interface, business logic, and presentation.
+                </p>
+            </div>
+        </div>
+        <!-- Bottom section of the right card -->
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Related Information</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><b>Static Assets Folder</b>: <a href="https://github.com/nozomi-75/soko/tree/main/src/main/resources/static" target="_blank">Static Assets Folder</a></li>
+                    <li class="mb-2"><b>SPA (Single-Page Application)</b>: The `index.html` file acts as the entry point for a single-page application, with the `main.js` handling all the dynamic interactions.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

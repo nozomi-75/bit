@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'slide2.html',
         'slide3.html',
         'slide4.html',
-        'slide5.html'
+        'slide5.html',
+        'slide6.html',
+        'slide7.html'
     ];
     let currentSlideIndex = 0;
 
