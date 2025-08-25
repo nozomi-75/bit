@@ -106,6 +106,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Add event listener for About button to show modal
+    const aboutBtn = document.getElementById('aboutBtn');
+    if (aboutBtn) {
+        aboutBtn.addEventListener('click', function() {
+            const aboutModal = new bootstrap.Modal(document.getElementById('aboutModal'));
+            aboutModal.show();
+        });
+    }
+
     // Initial load of the first slide and update button states
     loadSlide(slides[currentSlideIndex]);
     updateButtonState();
