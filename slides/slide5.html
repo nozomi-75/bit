@@ -1,64 +1,55 @@
 <div class="row w-100 g-3">
-    <!-- Left hand card (standalone) -->
     <div class="col-12 col-md-6 mb-3 mb-md-0">
         <div class="card shadow-sm h-100">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Application Dependencies Diagram</h4>
+                <h4 class="card-title my-2 fw-bold">Additional Features</h4>
             </div>
             <div class="card-body">
-                <!-- No Mermaid diagram for dependencies, but you could add one if desired -->
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <span class="badge bg-primary rounded-pill me-2">Starter</span>
-                        <span class="fw-bold">Spring Boot Starter Web:</span> For building web applications with Spring MVC.
+                        <div class="fw-bold"><i class="bi bi-filetype-csv me-2 text-primary"></i>CSV Export</div>
+                        <p class="mb-0">A dedicated backend service leverages the <strong>Apache Commons CSV</strong> library and queries the database. The product data is streamed back to the user as a downloadable file.</p>
                     </li>
                     <li class="list-group-item">
-                        <span class="badge bg-primary rounded-pill me-2">Starter</span>
-                        <span class="fw-bold">Spring Boot Starter Data JPA:</span> For JPA support and database interaction.
+                        <div class="fw-bold"><i class="bi bi-printer me-2 text-success"></i>Print-Friendly Output</div>
+                        <p class="mb-0">The application applies a custom stylesheet to hide non-essential UI elements like buttons and modals. This provides a clean, professional, print-friendly look of the product table.</p>
                     </li>
                     <li class="list-group-item">
-                        <span class="badge bg-primary rounded-pill me-2">Starter</span>
-                        <span class="fw-bold">Spring Boot Starter JDBC:</span> For using the JDBC API with Spring.
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge bg-secondary rounded-pill me-2">Database</span>
-                        <span class="fw-bold">H2 Database:</span> An in-memory database for development and testing.
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge bg-info rounded-pill me-2">Utility</span>
-                        <span class="fw-bold">Commons CSV:</span> For handling CSV file operations.
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge bg-info rounded-pill me-2">Utility</span>
-                        <span class="fw-bold">Lombok:</span> Reduces boilerplate code (e.g., getters and setters).
+                        <div class="fw-bold"><i class="bi bi-currency-dollar me-2 text-warning"></i>Currency Conversion</div>
+                        <p class="mb-0">This feature is a client-side implementation using <strong>vanilla JavaScript</strong>. The application script fetches real-time exchange rates from a third-party API and instantly updates all product prices on the screen without a page reload.</p>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Right hand card (divided into two sections) -->
-    <div class="col-12 col-md-6 d-flex flex-column">
-        <!-- Top section of the right card -->
-        <div class="card shadow-sm mb-3 flex-grow-1">
+    <div class="col-12 col-md-6">
+        <div class="card shadow-sm h-100">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Application Dependencies</h4>
+                <h4 class="card-title my-2 fw-bold">Key Files & Libraries</h4>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    This list summarizes the main dependencies found in the project's <code>pom.xml</code> file, which are essential for its functionality.
-                </p>
-            </div>
-        </div>
-        <!-- Bottom section of the right card -->
-        <div class="card shadow-sm flex-grow-1">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Relevant Information</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters" target="_blank">Spring Boot Starters Guide</a></li>
-                    <li class="mb-2"><a href="https://mvnrepository.com/artifact/org.projectlombok/lombok" target="_blank">Lombok on Maven Repository</a></li>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><code>CsvExportService.java</code></div>
+                        <p class="mb-0">This backend service handles the logic for generating and writing the CSV file. It's the core component for the export functionality.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><code>print.css</code></div>
+                        <p class="mb-0">A separate stylesheet dedicated to defining print styles, ensuring a clean and readable hardcopy of the inventory list.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><code>main.js</code></div>
+                        <p class="mb-0">Contains the JavaScript functions for fetching and applying currency exchange rates, as well as the logic for the light/dark theme toggle.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><a href="https://commons.apache.org/proper/commons-csv/" target="_blank">Apache Commons CSV</a></div>
+                        <p class="mb-0">A powerful Java library used on the backend to simplify the process of reading and writing various CSV formats.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><a href="https://www.exchangerate-api.com/" target="_blank">ExchangeRate-API</a></div>
+                        <p class="mb-0">A free and reliable third-party service that the frontend calls to get up-to-the-minute currency exchange rates.</p>
+                    </li>
                 </ul>
             </div>
         </div>
