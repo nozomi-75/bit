@@ -8,6 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Include Bootstrap Icons from CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Include Mermaid for diagram rendering -->
+    <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+        mermaid.initialize({ startOnLoad: true });
+    </script>
     <style>
         body {
             /* Add some padding to the bottom so the content doesn't get hidden by the fixed bar */
@@ -27,6 +32,39 @@
             border-bottom: 1px solid rgba(0,0,0,.125);
             background-color: transparent;
         }
+
+        /* Mermaid diagram styling to be uniform with Bootstrap */
+        .mermaid {
+            background-color: white !important;
+            border-radius: 0.375rem;
+            padding: 1rem;
+        }
+        
+        .mermaid .cluster rect {
+            fill: #E9ECEF !important;
+            stroke: #adb5bd !important;
+        }
+
+        .mermaid .node rect {
+            fill: #E9ECEF !important;
+            stroke: #adb5bd !important;
+        }
+
+        /* Styling for the mermaid diagram nodes to adhere to Bootstrap colors */
+        .mermaid .frontend rect {
+            fill: #E0F7FA !important; /* light cyan */
+            stroke: #007BFF !important; /* blue */
+        }
+        
+        .mermaid .server rect {
+            fill: #E9FBEA !important; /* light green */
+            stroke: #28a745 !important; /* green */
+        }
+
+        .mermaid .db rect {
+            fill: #FFF3E0 !important; /* light orange */
+            stroke: #fd7e14 !important; /* orange */
+        }
     </style>
 </head>
 <body>
@@ -39,12 +77,26 @@
             <div class="col-12 col-md-6 mb-3 mb-md-0">
                 <div class="card shadow-sm h-100">
                     <div class="card-header card-header-bordered">
-                        <h5 class="card-title my-2">Slide Title</h5>
+                        <h4 class="card-title my-2 fw-bold">Client Layer Diagram</h4>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">
-                            This is the left-hand card. It is a standalone section within the slide. You can place key information, images, or a main point here.
-                        </p>
+                        <!-- Mermaid Diagram -->
+                        <div class="mermaid">
+                            flowchart TB
+
+                            subgraph "Client Layer"
+                              StaticAssets["Static Assets<br/>(index.html, main.js, print.css,<br/>manifest.json, sw.js)"]:::frontend
+                            end
+                            BrowserUI["Browser (SPA UI)"]:::frontend
+                            BrowserAPI["Browser (API Requests)"]:::frontend
+
+                            BrowserUI -->|"loads"| StaticAssets
+                            BrowserAPI -->|"HTTP GET/POST /api/products"| ServerLayer["Server Layer"]
+                            
+                            style StaticAssets fill:#E0F7FA,stroke:#007BFF
+                            style BrowserUI fill:#E0F7FA,stroke:#007BFF
+                            style BrowserAPI fill:#E0F7FA,stroke:#007BFF
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,23 +106,25 @@
                 <!-- Top section of the right card -->
                 <div class="card shadow-sm mb-3 flex-grow-1">
                     <div class="card-header card-header-bordered">
-                        <h6 class="card-title my-2">Section A</h6>
+                        <h4 class="card-title my-2 fw-bold">The Client Layer</h4>
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            This is the top section of the right-hand card. It's great for breaking down a complex topic or showing a sequence of information.
+                            This section provides an overview of the Client Layer.
+                            This layer represents the user-facing part of the application. It's responsible for displaying the user interface (UI) and for communicating with the server to fetch and send data. The main components are the browser's UI and API interaction, as well as the static assets that are served to the browser.
                         </p>
                     </div>
                 </div>
                 <!-- Bottom section of the right card -->
                 <div class="card shadow-sm flex-grow-1">
                     <div class="card-header card-header-bordered">
-                        <h6 class="card-title my-2">Section B</h6>
+                        <h4 class="card-title my-2 fw-bold">Related Information</h4>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">
-                            This is the bottom section of the right-hand card. You can use this for supplementary details, a call to action, or a summary.
-                        </p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><b>Static Assets</b>: <a href="https://github.com/nozomi-75/soko/tree/main/src/main/resources/static">Static Assets Folder</a></li>
+                            <li class="mb-2"><b>Connection to Server</b>: The browser's API calls interact with the Server Layer to retrieve product data.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
