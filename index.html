@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Slide Deck</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap Icons from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            /* Add some padding to the bottom so the content doesn't get hidden by the fixed bar */
+            padding-bottom: 4.5rem;
+            background-color: #f8f9fa; /* Light gray background */
+        }
+
+        /* Enforce a consistent height for the slide area to prevent content jumping */
+        .slide-container {
+            min-height: calc(100vh - 4.5rem);
+            display: flex;
+            align-items: center;
+        }
+
+        /* Custom style for the card header border */
+        .card-header-bordered {
+            border-bottom: 1px solid rgba(0,0,0,.125);
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main content area for the slides -->
+    <div class="container slide-container d-flex align-items-center">
+        <!-- The single slide, occupying the space above the bottom bar -->
+        <div class="row w-100">
+            <!-- Left hand card (standalone) -->
+            <div class="col-12 col-md-6 mb-3 mb-md-0">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header card-header-bordered">
+                        <h5 class="card-title my-2">Slide Title</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            This is the left-hand card. It is a standalone section within the slide. You can place key information, images, or a main point here.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right hand card (divided into two sections) -->
+            <div class="col-12 col-md-6 d-flex flex-column">
+                <!-- Top section of the right card -->
+                <div class="card shadow-sm mb-3 flex-grow-1">
+                    <div class="card-header card-header-bordered">
+                        <h6 class="card-title my-2">Section A</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            This is the top section of the right-hand card. It's great for breaking down a complex topic or showing a sequence of information.
+                        </p>
+                    </div>
+                </div>
+                <!-- Bottom section of the right card -->
+                <div class="card shadow-sm flex-grow-1">
+                    <div class="card-header card-header-bordered">
+                        <h6 class="card-title my-2">Section B</h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            This is the bottom section of the right-hand card. You can use this for supplementary details, a call to action, or a summary.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed bottom navigation bar -->
+    <nav class="navbar navbar-expand navbar-light bg-light fixed-bottom border-top shadow-lg">
+        <div class="container-fluid">
+            <!-- Left side controls -->
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-1" type="button">
+                    <i class="bi bi-chevron-left"></i>
+                    <span class="d-none d-sm-inline">Previous</span>
+                </button>
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-1" type="button">
+                    <span class="d-none d-sm-inline">Next</span>
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Right side about button -->
+            <div class="ms-auto">
+                <button class="btn btn-primary d-flex align-items-center gap-1" type="button">
+                    <i class="bi bi-info-circle"></i>
+                    <span class="d-none d-sm-inline">About</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Include Bootstrap JS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
