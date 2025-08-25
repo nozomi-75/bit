@@ -1,0 +1,68 @@
+<div class="row w-100 g-3">
+    <div class="col-12 col-md-6 mb-3 mb-md-0">
+        <div class="card shadow-sm h-100">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Build Process Diagram</h4>
+            </div>
+            <div class="card-body">
+                <div class="mermaid">
+                    flowchart TD
+                        subgraph "Build Process"
+                            A[mvnw/mvnw.cmd]:::build
+                            B((Maven)):::build
+                            C[pom.xml]:::config
+                            D[Maven Plugins]:::config
+                            E[Maven Dependencies]:::config
+                            F[SokoApp.jar]:::output
+                        end
+
+                        A -->|executes| B
+                        B -->|reads build config from| C
+                        C -->|manages| D & E
+                        B -->|generates| F
+
+                        classDef build fill:#D1E7DD,stroke:#28a745;
+                        classDef config fill:#F8D7DA,stroke:#DC3545;
+                        classDef output fill:#CCE5FF,stroke:#007BFF;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 d-flex flex-column">
+        <div class="card shadow-sm mb-3 flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">The Build Process</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-gear-fill me-2 text-primary"></i>The Maven Wrapper</div>
+                        <p class="mb-0">The <code>mvnw</code> command is a <strong>wrapper script</strong> that downloads and uses the specified version of Maven, so you don't need to install it manually.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-file-earmark-code me-2 text-success"></i>The <code>pom.xml</code> File</div>
+                        <p class="mb-0">This file is the <strong>core build configuration</strong> that declares the project's dependencies, the plugins needed, and other essential project metadata.</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-box-seam me-2 text-info"></i>Generating the JAR</div>
+                        <p class="mb-0">Maven reads the <code>pom.xml</code>, downloads the necessary dependencies, and uses the <strong>Spring Boot Maven Plugin</strong> to create a single, executable JAR file.</p>
+                        <pre class="bg-light p-2 rounded mt-2"><code>mvnw spring-boot:run</code></pre>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card shadow-sm flex-grow-1">
+            <div class="card-header card-header-bordered">
+                <h4 class="card-title my-2 fw-bold">Related Information</h4>
+            </div>
+            <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html" target="_blank">Maven in 5 Minutes</a></li>
+                <li class="list-group-item"><a href="https://spring.io/guides/gs/spring-boot-maven-plugin/" target="_blank">Spring Boot Maven Plugin</a></li>
+            </ul>
+        </div>
+        </div>
+        
+    </div>
+</div>
