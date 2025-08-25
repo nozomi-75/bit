@@ -1,5 +1,8 @@
 // This is the script to handle the slide deck functionality.
 
+// We need to import the mermaid library here since we're using a type="module" script
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
 document.addEventListener('DOMContentLoaded', () => {
     const slideContainer = document.getElementById('slide-container');
     const prevBtn = document.getElementById('prev-btn');
@@ -24,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const slideContent = await response.text();
             slideContainer.innerHTML = slideContent;
-            // Reinitialize Mermaid after the new content is loaded
-            mermaid.init();
+            // Tell Mermaid to run and re-render the new diagram content
+            mermaid.run({
+                querySelector: '.mermaid',
+            });
         } catch (error) {
             console.error('Failed to load slide:', error);
             slideContainer.innerHTML = '<p class="text-danger text-center mt-5">Failed to load content.</p>';
