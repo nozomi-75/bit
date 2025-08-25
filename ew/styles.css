@@ -6,6 +6,24 @@ body {
     background-color: #f8f9fa; /* Light gray background */
 }
 
+/* Progress bar styling */
+.progress-bar-container {
+    height: 5px;
+    background-color: #e9ecef;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030; /* Place it above other content */
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #0d6efd; /* Bootstrap primary color */
+    width: 0%; /* Initial width */
+    transition: width 0.3s ease-in-out; /* Smooth transition for the bar */
+}
+
 /* Enforce a consistent height for the slide area to prevent content jumping */
 .slide-container {
     min-height: calc(100vh - 4.5rem);
@@ -26,6 +44,13 @@ body {
     background-color: white !important;
     border-radius: 0.375rem;
     padding: 1rem;
+}
+
+/* Media query to reduce font size on small screens for better fit */
+@media (max-width: 576px) {
+    .mermaid {
+        font-size: 0.8rem;
+    }
 }
 
 .mermaid .cluster rect {
@@ -52,4 +77,31 @@ body {
 .mermaid .db rect {
     fill: #FFF3E0 !important; /* light orange */
     stroke: #fd7e14 !important; /* orange */
+}
+
+/* Fade animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
