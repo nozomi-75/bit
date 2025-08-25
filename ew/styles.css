@@ -11,8 +11,6 @@ body {
     min-height: calc(100vh - 4.5rem);
     display: flex;
     align-items: center;
-    /* Added responsive padding to fix mobile spacing issues */
-    padding: 1rem;
 }
 
 /* Custom style for the card header border */
