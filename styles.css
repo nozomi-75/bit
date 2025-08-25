@@ -6,6 +6,11 @@ body {
     background-color: #f8f9fa; /* Light gray background */
 }
 
+pre {
+    white-space: pre-wrap; /* Tells the browser to wrap text inside the pre tag */
+    word-break: break-all;   /* Forces long strings like URLs to break and wrap */
+}
+
 /* Progress bar styling */
 .progress-bar-container {
     height: 5px;

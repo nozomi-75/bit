@@ -1,79 +1,83 @@
 <div class="row w-100 g-3">
-    <!-- Left hand card (standalone) -->
     <div class="col-12 col-md-6 mb-3 mb-md-0">
         <div class="card shadow-sm h-100">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Server Layer Diagram</h4>
+                <h4 class="card-title my-2 fw-bold">Installation & Running</h4>
             </div>
             <div class="card-body">
-                <!-- Mermaid Diagram -->
-                <div class="mermaid">
-                    flowchart TB
-
-                    subgraph "Server Layer"
-                      SokoApp["SokoApplication"]:::server
-
-                      subgraph "Controller Layer"
-                        Controller["ProductController"]:::server
-                      end
-
-                      subgraph "Service Layer"
-                        ProdService["ProductService"]:::server
-                        CsvService["CsvExportService"]:::server
-                      end
-
-                      subgraph "Repository Layer"
-                        Repository["ProductRepository"]:::server
-                      end
-
-                      Model["Product Entity"]:::server
-                    end
-                    
-                    style SokoApp fill:#E9FBEA,stroke:#28a745
-                    style Controller fill:#E9FBEA,stroke:#28a745
-                    style ProdService fill:#E9FBEA,stroke:#28a745
-                    style CsvService fill:#E9FBEA,stroke:#28a745
-                    style Repository fill:#E9FBEA,stroke:#28a745
-                    style Model fill:#E9FBEA,stroke:#28a745
-
-                    Controller -->|"calls"| ProdService
-                    Controller -->|"export CSV"| CsvService
-                    ProdService -->|"queries"| Repository
-                    CsvService -->|"queries"| Repository
-                    Repository -->|"persists/reads"| Database["Database"]
-                </div>
+                <p>Follow these steps in your terminal to get the application running locally.</p>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 px-0">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Clone the Repository</div>
+                            Download the source code to your local machine.
+                            <pre class="bg-light p-2 rounded mt-2"><code>git clone https://github.com/nozomi-75/soko.git</code></pre>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 px-0">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Navigate into the Directory</div>
+                            Move into the newly created project folder.
+                            <pre class="bg-light p-2 rounded mt-2"><code>cd soko</code></pre>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 px-0">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Run the Application</div>
+                            Use the Maven Wrapper included in the project. This will download dependencies and start the server.
+                            <div class="mt-2">
+                                <small class="text-muted">For macOS / Linux:</small>
+                                <pre class="bg-light p-2 rounded"><code>./mvnw spring-boot:run</code></pre>
+                                <small class="text-muted">For Windows:</small>
+                                <pre class="bg-light p-2 rounded"><code>mvnw.cmd spring-boot:run</code></pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start border-0 px-0">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Access the Application</div>
+                            Once the server starts, open your web browser and go to:
+                            <br>
+                            <a href="http://localhost:9090" target="_blank" class="mt-2 d-inline-block">http://localhost:9090</a>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>
 
-    <!-- Right hand card (divided into two sections) -->
     <div class="col-12 col-md-6 d-flex flex-column">
-        <!-- Top section of the right card -->
         <div class="card shadow-sm mb-3 flex-grow-1">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">The Server Layer</h4>
+                <h4 class="card-title my-2 fw-bold">Let's Get You Started</h4>
             </div>
             <div class="card-body">
                 <p class="card-text">
-                    This section provides an overview of the Server Layer.
-                    The server layer is the backend of the application, handling business logic, data processing, and communication with the database. It is composed of the Controller, Service, and Repository layers.
+                    Getting a new project up and running can sometimes be tricky, but we've made sure Sōko's setup is as smooth as possible. These steps will take you from downloading the code to seeing the live application in your browser.
+                </p>
+                <p class="card-text">
+                    No complex configuration needed. Just a few commands and you're ready to go!
                 </p>
             </div>
         </div>
-        <!-- Bottom section of the right card -->
         <div class="card shadow-sm flex-grow-1">
             <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Related Information</h4>
+                <h4 class="card-title my-2 fw-bold">What You'll Need</h4>
             </div>
             <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><b>SokoApp</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/SokoApplication.java">SokoApplication.java</a></li>
-                    <li class="mb-2"><b>Controller</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/controller/ProductController.java">ProductController.java</a></li>
-                    <li class="mb-2"><b>ProdService</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/service/ProductService.java">ProductService.java</a></li>
-                    <li class="mb-2"><b>CsvService</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/service/CsvExportService.java">CsvExportService.java</a></li>
-                    <li class="mb-2"><b>Repository</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/repository/ProductRepository.java">ProductRepository.java</a></li>
-                    <li class="mb-2"><b>Model</b>: <a href="https://github.com/nozomi-75/soko/blob/main/src/main/java/com/keiaa/soko/model/Product.java">Product.java</a></li>
-                    <li class="mb-2"><b>Database</b>: The server layer interacts with a database, which holds the application's data.</li>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-cup-hot-fill me-2"></i>JDK 17 or later</div>
+                        The engine that powers our Java-based backend.
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-git me-2"></i>Git</div>
+                        Required for cloning the repository from GitHub.
+                    </li>
+                    <li class="list-group-item">
+                        <div class="fw-bold"><i class="bi bi-terminal me-2"></i>Maven (via Wrapper)</div>
+                        You don't need to install Maven separately! The project includes a wrapper (`mvnw`) that handles everything for you.
+                    </li>
                 </ul>
             </div>
         </div>
