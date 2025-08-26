@@ -3,7 +3,7 @@
 
 export const config = {
   // Change this to rename the app everywhere it's used
-  appName: "Sōko Deck",
+  appName: "Sōko",
 
   // Slide fragments (relative URLs). Example files should live in /slides/
   slides: [
