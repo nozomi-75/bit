@@ -10,13 +10,13 @@
 <body>
   <!-- Editor Card (Bottom Drawer) -->
   <div id="editorCard" class="card shadow-lg">
-    <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h5 class="card-title mb-0">Edit your <code>.bit</code> YAML</h5>
-        <button id="hideEditorBtn" class="btn btn-sm btn-outline-secondary" title="Hide editor">
-          <span aria-hidden="true">&darr;</span>
-        </button>
-      </div>
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Edit your <code>.bit</code> YAML</span>
+      <button id="toggleEditorBtn" class="btn btn-sm btn-outline-secondary" title="Toggle editor">
+        <span id="toggleIcon" aria-hidden="true">&darr;</span>
+      </button>
+    </div>
+    <div class="card-body" id="editorBody">
       <textarea id="yamlInput" class="form-control mb-3" rows="10" placeholder="Paste or write your .bit YAML here..."></textarea>
       <div class="d-flex justify-content-end gap-2">
         <button id="downloadBtn" class="btn btn-outline-secondary">Download HTML</button>
@@ -26,7 +26,6 @@
   </div>
   <!-- Preview Area -->
   <div id="previewArea" class="container">
-    <button id="editBtn" class="btn btn-secondary mb-3" style="display:none;">Edit YAML</button>
     <div id="htmlPreview"></div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

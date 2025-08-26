@@ -8,13 +8,29 @@ body {
   left: 0; right: 0;
   bottom: 0;
   z-index: 1000;
-  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1), height 0.4s cubic-bezier(.4,0,.2,1);
   box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
   max-width: 100vw;
   border-radius: 18px 18px 0 0;
 }
-#editorCard.hide {
-  transform: translateY(105%);
+#editorCard.collapsed {
+  height: 56px; /* Only header visible */
+  overflow: hidden;
+  border-radius: 18px 18px 0 0;
+}
+#editorCard .card-header {
+  background: #fff;
+  user-select: none;
+  cursor: pointer;
+}
+#editorCard .card-body {
+  transition: opacity 0.3s;
+}
+#editorCard.collapsed .card-body {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  padding: 0;
 }
 #previewArea {
   padding: 2rem 1rem;
