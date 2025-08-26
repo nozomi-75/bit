@@ -2,6 +2,8 @@
 
 Present your ideas, one bit at a time.
 
+![Screenshot of bit](screenshot.png)
+
 **bit** is a lightweight, static Single Page Application (SPA) designed for creating and presenting slide-based content. It leverages **Bootstrap 5**, **Mermaid.js**, and **vanilla JavaScript** to deliver a clean, responsive, and customizable presentation experience.
 
 ## Features
