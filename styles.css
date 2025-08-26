@@ -1,80 +1,134 @@
-/* Custom styling for the slide deck */
-
+/* ================================
+   THEME-AWARE BODY
+   ================================ */
 body {
-    /* Add some padding to the bottom so the content doesn't get hidden by the fixed bar */
-    padding-bottom: 4.5rem;
-    background-color: var(--bs-body-bg);   /* theme-aware background */
-    color: var(--bs-body-color);           /* theme-aware text */
+    padding-bottom: 4.5rem; /* space for fixed navbar */
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
 }
 
+/* ================================
+   CODE BLOCKS
+   ================================ */
 pre {
-    white-space: pre-wrap; /* Tells the browser to wrap text inside the pre tag */
-    word-break: break-all;   /* Forces long strings like URLs to break and wrap */
+    background-color: var(--bs-tertiary-bg); /* adapts with theme */
+    color: var(--bs-body-color);
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    font-family: var(--bs-font-monospace);
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+    margin-bottom: 1rem;
 }
 
-/* Progress bar styling */
+/* Ensure <code> inside pre inherits styling */
+pre code {
+    background: none;
+    color: inherit;
+    font: inherit;
+    padding: 0;
+}
+
+/* Inline code (outside pre) gets a subtle highlight */
+:not(pre) > code {
+    background-color: var(--bs-tertiary-bg);
+    color: var(--bs-body-color);
+    border-radius: 0.25rem;
+    padding: 0.2rem 0.4rem;
+    font-family: var(--bs-font-monospace);
+}
+
+/* ================================
+   PROGRESS BAR
+   ================================ */
 .progress-bar-container {
     height: 5px;
-    background-color: #e9ecef;
+    background-color: var(--bs-border-color);
     width: 100%;
-    /* Positioned absolutely within the navbar */
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1030; /* Place it above other content */
+    z-index: 1030;
 }
 
 .navbar .container-fluid {
-    padding-top: 0.5rem; /* Increase as needed for more space */
+    padding-top: 0.5rem;
 }
 
 .progress-bar {
     height: 100%;
-    background-color: #0d6efd; /* Bootstrap primary color */
-    width: 0%; /* Initial width */
-    transition: width 0.3s ease-in-out; /* Smooth transition for the bar */
+    background-color: #0d6efd; /* Bootstrap primary */
+    width: 0%;
+    transition: width 0.3s ease-in-out;
 }
 
-/* Enforce a consistent height for the slide area to prevent content jumping */
+/* ================================
+   SLIDE AREA
+   ================================ */
 .slide-container {
     min-height: calc(100vh - 4.5rem);
     display: flex;
     align-items: center;
-    /* Added responsive padding to fix mobile spacing issues */
     padding: 1rem;
 }
 
-/* Custom style for the card header border */
+/* ================================
+   CARD HEADER
+   ================================ */
 .card-header-bordered {
-    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid var(--bs-border-color);
     background-color: transparent;
 }
 
-/* Mermaid diagram styling to be uniform with Bootstrap */
+/* ================================
+   MERMAID DIAGRAMS
+   ================================ */
 .mermaid {
-    background-color: var(--bs-body-bg);
+    background-color: var(--bs-body-bg) !important;
     border-radius: 0.375rem;
     padding: 1rem;
 }
 
-/* Media query to reduce font size on small screens for better fit */
-@media (max-width: 576px) {
-    .mermaid {
-        font-size: 0.8rem;
-    }
+/* Text and labels */
+.mermaid svg,
+.mermaid text,
+.mermaid tspan {
+    color: var(--bs-body-color) !important;
+    fill: var(--bs-body-color) !important;
 }
 
-.mermaid .cluster rect {
-    fill: #E9ECEF !important;
-    stroke: #adb5bd !important;
+/* Edges and connectors */
+.mermaid .edgePaths path,
+.mermaid .edgePath path {
+    stroke: var(--bs-body-color) !important;
 }
 
-.mermaid .node rect {
-    fill: #E9ECEF !important;
-    stroke: #adb5bd !important;
+/* Arrowheads / markers */
+.mermaid path.arrowheadPath,
+.mermaid marker path,
+.mermaid .marker path {
+    fill: var(--bs-body-color) !important;
+    stroke: var(--bs-body-color) !important;
 }
 
-/* Styling for the mermaid diagram nodes to adhere to Bootstrap colors */
+/* Node & cluster outlines */
+.mermaid .node rect,
+.mermaid .cluster rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+    stroke: var(--bs-border-color) !important;
+}
+
+/* Dark mode: make clusters darker so arrows remain visible */
+:root[data-bs-theme="dark"] .mermaid .cluster rect {
+    fill: #2a2a2a !important;
+}
+
+/* ================================
+   YOUR EXISTING MERMAID NODE COLORS
+   ================================ */
 .mermaid .frontend rect {
     fill: #E0F7FA !important; /* light cyan */
     stroke: #007BFF !important; /* blue */
@@ -90,25 +144,29 @@ pre {
     stroke: #fd7e14 !important; /* orange */
 }
 
-/* New styles for API endpoint diagrams */
 .mermaid .get rect {
     fill: #D1E7DD !important; /* light green */
     stroke: #28a745 !important; /* green */
 }
+
 .mermaid .post rect {
     fill: #CCE5FF !important; /* light blue */
     stroke: #007BFF !important; /* blue */
 }
+
 .mermaid .put rect {
     fill: #FFF3E0 !important; /* light orange */
     stroke: #fd7e14 !important; /* orange */
 }
+
 .mermaid .delete rect {
     fill: #F8D7DA !important; /* light red */
     stroke: #DC3545 !important; /* red */
 }
 
-/* Fade animation */
+/* ================================
+   ANIMATIONS
+   ================================ */
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
 }
@@ -118,19 +176,20 @@ pre {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 @keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 576px) {
+    .mermaid {
+        font-size: 0.8rem;
     }
 }
