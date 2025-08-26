@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bitgen - .bit YAML Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8fafc; min-height: 100vh; }
+    #editorCard {
+      position: fixed;
+      left: 0; right: 0;
+      bottom: 0;
+      z-index: 1000;
+      transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.08);
+    }
+    #editorCard.hide {
+      transform: translateY(105%);
+    }
+    #previewArea {
+      padding: 2rem 1rem;
+      min-height: 60vh;
+      display: none;
+    }
+    #previewArea.show {
+      display: block;
+      animation: fadein 0.5s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Editor Card -->
+  <div id="editorCard" class="card mx-auto mb-0" style="max-width: 640px;">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Edit your <code>.bit</code> YAML</h5>
+      <textarea id="yamlInput" class="form-control mb-3" rows="10" placeholder="Paste or write your .bit YAML here..."></textarea>
+      <div class="d-flex justify-content-end gap-2">
+        <button id="downloadBtn" class="btn btn-outline-secondary">Download YAML</button>
+        <button id="previewBtn" class="btn btn-primary">Preview</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preview Area -->
+  <div id="previewArea" class="container"></div>
+
+  <!-- Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script>
+    // Basic YAML to HTML renderer for .bit slides (expand this as needed)
+    function renderBitYAML(yamlObj) {
+      const slide = yamlObj.slide || {};
+      let html = `<div class="container py-4">`;
+      if (slide.title) html += `<h2 class="mb-4">${slide.title}</h2>`;
+      (slide.sections || []).forEach(section => {
+        if (section.type === "heading") {
+          const sz = section.size || "h3";
+          html += `<${sz} class="mb-2">${section.content}</${sz}>`;
+        } else if (section.type === "text") {
+          html += `<p>${section.content}</p>`;
+        } else if (section.type === "button") {
+          html += `<button class="btn btn-${section.style||'primary'} me-2" onclick="alert('Button clicked!')">${section.label}</button>`;
+        } else if (section.type === "embed" && section.service === "mermaid") {
+          html += `<pre class="bg-light rounded p-3"><code>${section.code}</code></pre>`;
+        } else if (section.type === "card-group" && section.cards) {
+          html += `<div class="row row-cols-1 row-cols-md-2 g-4 mb-3">`;
+          section.cards.forEach(card => {
+            html += `
+              <div class="col">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">${card.title||""}</h5>
+                    <p class="card-text">${card.body||""}</p>
+                  </div>
+                  ${card.footer ? `<div class="card-footer text-end">${card.footer}</div>` : ""}
+                </div>
+              </div>
+            `;
+          });
+          html += `</div>`;
+        }
+      });
+      html += `</div>`;
+      return html;
+    }
+
+    // UI logic
+    const editorCard = document.getElementById('editorCard');
+    const previewBtn = document.getElementById('previewBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const previewArea = document.getElementById('previewArea');
+    const yamlInput = document.getElementById('yamlInput');
+
+    previewBtn.onclick = function() {
+      try {
+        const yamlObj = jsyaml.load(yamlInput.value);
+        previewArea.innerHTML = renderBitYAML(yamlObj);
+        editorCard.classList.add('hide');
+        previewArea.classList.add('show');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      } catch (e) {
+        alert("YAML Error: " + e.message);
+      }
+    };
+
+    downloadBtn.onclick = function() {
+      const yaml = yamlInput.value;
+      const blob = new Blob([yaml], {type: 'text/plain'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'slide.bit.yaml';
+      a.click();
+    };
+
+    // Allow reopening the card on click outside preview
+    previewArea.onclick = function() {
+      editorCard.classList.remove('hide');
+      previewArea.classList.remove('show');
+    };
+  </script>
+</body>
+</html>
