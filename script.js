@@ -1,6 +1,6 @@
 // This is the script to handle the slide deck functionality.
 
-// We need to import the mermaid library here since we're using a type="module" script
+// Import Mermaid
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,14 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         theme: 'default',
         securityLevel: 'loose',
         flowchart: {
-            // Use 'elk' renderer for a better, more compact layout
             defaultRenderer: 'elk',
-            // Use 'basis' curve for smoother lines that work well with the 'elk' renderer
             curve: 'basis'
         }
     });
 
-    // An array of slide file paths. Add more slides here as you create them.
+    // Slides array
     const slides = [
         'slides/slide1.html',
         'slides/slide2.html',
@@ -35,62 +33,41 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
     let currentSlideIndex = 0;
 
-    /**
-     * Updates the progress bar based on the current slide index.
-     */
+    // Update progress bar
     const updateProgressBar = () => {
         const progress = ((currentSlideIndex + 1) / slides.length) * 100;
         progressBar.style.width = `${progress}%`;
     };
 
-    /**
-     * Fetches and loads a slide from the specified URL into the container with a fade animation.
-     * @param {string} url - The URL of the slide to load.
-     */
+    // Load slide
     const loadSlide = async (url) => {
-        // First, fade out the current slide
         slideContainer.classList.add('fade-out');
-        
-        // Wait for the fade-out animation to finish
         await new Promise(resolve => setTimeout(resolve, 500));
         
         try {
             const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const slideContent = await response.text();
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             
-            // Remove the fade-out class and update content
+            const slideContent = await response.text();
             slideContainer.classList.remove('fade-out');
             slideContainer.innerHTML = slideContent;
-            
-            // Re-add the fade-in class to trigger the animation
             slideContainer.classList.add('fade-in');
             
-            // Tell Mermaid to run and re-render the new diagram content
-            await mermaid.run({
-                querySelector: '.mermaid',
-            });
-            
-            // Update the progress bar
+            await mermaid.run({ querySelector: '.mermaid' });
             updateProgressBar();
-            
         } catch (error) {
             console.error('Failed to load slide:', error);
             slideContainer.innerHTML = '<p class="text-danger text-center mt-5">Failed to load content.</p>';
         }
     };
 
-    /**
-     * Updates the button states (enabled/disabled) based on the current slide index.
-     */
+    // Update button states
     const updateButtonState = () => {
         prevBtn.disabled = currentSlideIndex === 0;
         nextBtn.disabled = currentSlideIndex === slides.length - 1;
     };
 
-    // Event listener for the "Previous" button
+    // Navigation
     prevBtn.addEventListener('click', () => {
         if (currentSlideIndex > 0) {
             currentSlideIndex--;
@@ -99,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener for the "Next" button
     nextBtn.addEventListener('click', () => {
         if (currentSlideIndex < slides.length - 1) {
             currentSlideIndex++;
@@ -108,16 +84,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Add event listener for About button to show modal
-    const aboutBtn = document.getElementById('aboutBtn');
-    if (aboutBtn) {
-        aboutBtn.addEventListener('click', function() {
-            const aboutModal = new bootstrap.Modal(document.getElementById('aboutModal'));
-            aboutModal.show();
-        });
+    // Theme toggle logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+        localStorage.setItem('theme', theme);
+
+        if (theme === 'dark') {
+            themeIcon.classList.replace('bi-moon', 'bi-sun');
+            themeToggleBtn.querySelector('span').textContent = 'Light';
+        } else {
+            themeIcon.classList.replace('bi-sun', 'bi-moon');
+            themeToggleBtn.querySelector('span').textContent = 'Dark';
+        }
     }
 
-    // Initial load of the first slide and update button states
+    // Check saved preference or system default
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    // Toggle on click
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    // Initial load
     loadSlide(slides[currentSlideIndex]);
     updateButtonState();
 });

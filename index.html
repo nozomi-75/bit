@@ -17,8 +17,8 @@
     </div>
 
     <!-- Fixed bottom navigation bar -->
-    <nav class="navbar navbar-expand navbar-light bg-light fixed-bottom border-top shadow-lg">
-        <!-- Progress bar container, now inside the navbar -->
+    <nav class="navbar navbar-expand fixed-bottom border-top shadow-lg bg-body-tertiary">
+        <!-- Progress bar container -->
         <div class="progress-bar-container">
             <div id="progress-bar" class="progress-bar"></div>
         </div>
@@ -36,8 +36,15 @@
                 </button>
             </div>
             
-            <!-- Right side about button -->
-            <div class="ms-auto">
+            <!-- Right side buttons -->
+            <div class="ms-auto d-flex gap-2">
+                <!-- Dark/Light Mode Toggle -->
+                <button id="theme-toggle" class="btn btn-outline-secondary d-flex align-items-center gap-1" type="button">
+                    <i id="theme-icon" class="bi bi-moon"></i>
+                    <span class="d-none d-sm-inline">Dark</span>
+                </button>
+
+                <!-- About button -->
                 <button class="btn btn-primary d-flex align-items-center gap-1" type="button" data-bs-toggle="modal" data-bs-target="#aboutModal">
                     <i class="bi bi-info-circle"></i>
                     <span class="d-none d-sm-inline">About</span>
@@ -58,7 +65,7 @@
                     <p><strong>Sōko</strong> (倉庫) means "warehouse" in Japanese.</p>
                     <p>This is a simple, responsive web application for managing a product inventory. It is built with Spring Boot, H2 Database, JavaScript, and Bootstrap 5. The project demonstrates a full-stack application with RESTful API services and a mobile-first user interface.</p>
                     <div class="d-grid">
-                        <a href="https://github.com/nozomi-75/soko" class="btn btn-outline-secondary" target="_blank"rel="noopener noreferrer">
+                        <a href="https://github.com/nozomi-75/soko" class="btn btn-outline-secondary" target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-github fa-fw me-2"></i>View on GitHub
                         </a>
                     </div>
