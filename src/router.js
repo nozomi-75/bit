@@ -1,7 +1,7 @@
-// This handles loading slide fragments, rendering Mermaid diagrams, and updating progress.
-// It accepts an optional onChange callback which is called after each successful navigation.
+// This handles loading slide fragments, rendering diagrams, and updating progress.
+// Mermaid-specific initialization and rendering are delegated to src/mermaid.js
 
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+import { initMermaid, runMermaid } from "./mermaid.js";
 
 export class SlideRouter {
   /**
@@ -18,11 +18,7 @@ export class SlideRouter {
     this.onChange = typeof options.onChange === "function" ? options.onChange : () => {};
 
     // configure mermaid once
-    mermaid.initialize({
-      theme: "default",
-      securityLevel: "loose",
-      flowchart: { defaultRenderer: "elk", curve: "basis" }
-    });
+    initMermaid();
   }
 
   get total() {
@@ -66,7 +62,7 @@ export class SlideRouter {
       this.container.classList.add("fade-in");
 
       // render mermaid diagrams if present
-      await mermaid.run({ querySelector: ".mermaid" });
+      await runMermaid(".mermaid");
     } catch (err) {
       console.error("Slide load error:", err);
       this.container.innerHTML = `<p class="text-danger text-center mt-5">Failed to load content.</p>`;

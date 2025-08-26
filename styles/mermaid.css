@@ -1,0 +1,97 @@
+/* Mermaid-specific styling separated from global stylesheet.
+   Keeps color rules and dark-mode tweaks in one place. */
+
+.mermaid {
+    background-color: var(--bs-body-bg) !important;
+    border-radius: 0.375rem;
+    padding: 1rem;
+}
+
+/* Text and labels */
+.mermaid svg,
+.mermaid text,
+.mermaid tspan {
+    color: var(--bs-body-color) !important;
+    fill: var(--bs-body-color) !important;
+}
+
+/* Edges and connectors default to body color (reverted) */
+.mermaid .edgePaths path,
+.mermaid .edgePath path {
+    stroke: var(--bs-body-color) !important;
+}
+
+/* Arrowheads / markers default to body color (reverted) */
+.mermaid path.arrowheadPath,
+.mermaid marker path,
+.mermaid .marker path {
+    fill: var(--bs-body-color) !important;
+    stroke: var(--bs-body-color) !important;
+}
+
+/* Dark mode: edge lines in red */
+:root[data-bs-theme="dark"] .mermaid .edgePath path {
+    stroke: var(--bs-danger) !important;
+    fill: none !important;
+}
+
+/* Dark mode: arrowheads in red */
+:root[data-bs-theme="dark"] .mermaid path.arrowheadPath,
+:root[data-bs-theme="dark"] .mermaid marker path,
+:root[data-bs-theme="dark"] .mermaid .marker path {
+    stroke: var(--bs-danger) !important;
+    fill: var(--bs-danger) !important;
+}
+
+/* Node & cluster outlines */
+.mermaid .node rect,
+.mermaid .cluster rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+    stroke: var(--bs-border-color) !important;
+}
+
+/* Dark mode: make clusters darker so arrows remain visible */
+:root[data-bs-theme="dark"] .mermaid .cluster rect {
+    fill: #2a2a2a !important;
+}
+
+/* ================================
+   YOUR EXISTING MERMAID NODE COLORS
+   (kept intact)
+   ================================ */
+.mermaid .frontend rect {
+    fill: #E0F7FA !important; /* light cyan */
+    stroke: #007BFF !important; /* blue */
+}
+
+.mermaid .server rect {
+    fill: #E9FBEA !important; /* light green */
+    stroke: #28a745 !important; /* green */
+}
+
+.mermaid .db rect {
+    fill: #FFF3E0 !important; /* light orange */
+    stroke: #fd7e14 !important; /* orange */
+}
+
+.mermaid .get rect {
+    fill: #D1E7DD !important; /* light green */
+    stroke: #28a745 !important; /* green */
+}
+
+.mermaid .post rect {
+    fill: #CCE5FF !important; /* light blue */
+    stroke: #007BFF !important; /* blue */
+}
+
+.mermaid .put rect {
+    fill: #FFF3E0 !important; /* light orange */
+    stroke: #fd7e14 !important; /* orange */
+}
+
+.mermaid .delete rect {
+    fill: #F8D7DA !important; /* light red */
+    stroke: #DC3545 !important; /* red */
+}

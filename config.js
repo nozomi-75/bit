@@ -7,14 +7,14 @@ export const config = {
 
   // Slide fragments (relative URLs). Example files should live in /slides/
   slides: [
-    "slides/slide1.html",
-    "slides/slide2.html",
-    "slides/slide3.html",
-    "slides/slide4.html",
-    "slides/slide5.html",
-    "slides/slide6.html",
-    "slides/slide7.html",
-    "slides/slide8.html",
-    "slides/slide9.html",
+    "partials/slide1.html",
+    "partials/slide2.html",
+    "partials/slide3.html",
+    "partials/slide4.html",
+    "partials/slide5.html",
+    "partials/slide6.html",
+    "partials/slide7.html",
+    "partials/slide8.html",
+    "partials/slide9.html",
   ]
 };
