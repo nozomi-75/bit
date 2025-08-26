@@ -1,78 +1,124 @@
-<div class="row w-100 g-3">
-    <div class="col-12 col-md-6 mb-3 mb-md-0">
-        <div class="card shadow-sm h-100">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">API Endpoint Breakdown</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="fw-bold"><i class="bi bi-arrow-right-short me-2"></i><code>GET /api/products</code></div>
-                        <p class="mb-0">Retrieves a list of all products. Supports optional query parameters for searching, sorting, and filtering.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="fw-bold"><i class="bi bi-arrow-right-short me-2"></i><code>GET /api/products/{id}</code></div>
-                        <p class="mb-0">Fetches a single product by its unique ID.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="fw-bold"><i class="bi bi-arrow-right-short me-2"></i><code>POST /api/products</code></div>
-                        <p class="mb-0">Adds a new product to the inventory.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="fw-bold"><i class="bi bi-arrow-right-short me-2"></i><code>PUT /api/products/{id}</code></div>
-                        <p class="mb-0">Updates an existing product's details.</p>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="fw-bold"><i class="bi bi-arrow-right-short me-2"></i><code>DELETE /api/products/{id}</code></div>
-                        <p class="mb-0">Deletes a product by its unique ID.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
+<div class="container my-4">
+  <h2 class="mb-3">API Endpoints</h2>
+  <p class="text-muted">
+    The backend exposes RESTful endpoints under the base path 
+    <code>/api/products</code>. Expand each section to see details and
+    example <code>curl</code> commands.
+  </p>
+
+  <!-- GET /api/products -->
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>GET /api/products</span>
+      <button class="btn btn-sm btn-outline-primary" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapseGetAll"
+        aria-expanded="false" aria-controls="collapseGetAll">
+        Example
+      </button>
     </div>
-
-    <div class="col-12 col-md-6 d-flex flex-column">
-        <div class="card shadow-sm mb-3 flex-grow-1">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">RESTful API</h4>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    The backend is a robust RESTful API built with <strong>Spring Boot</strong>. It provides a clean set of endpoints that allow the client to perform all necessary <strong>CRUD</strong> operations on the product data.
-                </p>
-            </div>
+    <div class="collapse" id="collapseGetAll">
+      <div class="card-body">
+        <p>Retrieves a list of all products. Supports query parameters for flexible searches.</p>
+        <div class="overflow-auto text-wrap w-100">
+          <pre><code>curl -X GET "http://localhost:9090/api/products?name=Java&amp;category=Books&amp;maxPrice=50&amp;sortBy=price&amp;sortOrder=asc"</code></pre>
         </div>
-        <div class="card shadow-sm flex-grow-1">
-            <div class="card-header card-header-bordered">
-                <h4 class="card-title my-2 fw-bold">Try It Yourself!</h4>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    Here are some example <code>curl</code> commands to demonstrate how to interact with the API. Remember to run the server first.
-                </p>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGet" aria-expanded="false" aria-controls="collapseGet">
-                        <i class="bi bi-code me-2"></i>GET All Products
-                    </button>
-                    <div class="collapse" id="collapseGet">
-                        <pre class="bg-light p-2 rounded"><code>curl -X GET http://localhost:9090/api/products</code></pre>
-                    </div>
-
-                    <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePost" aria-expanded="false" aria-controls="collapsePost">
-                        <i class="bi bi-code me-2"></i>POST a New Product
-                    </button>
-                    <div class="collapse" id="collapsePost">
-                        <pre class="bg-light p-2 rounded"><code>curl -X POST -H "Content-Type: application/json" -d '{"itemName": "New Item", "itemPrice": 12.99, "itemCategory": "Gadgets"}' http://localhost:9090/api/products</code></pre>
-                    </div>
-
-                    <button class="btn btn-outline-warning" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePut" aria-expanded="false" aria-controls="collapsePut">
-                        <i class="bi bi-code me-2"></i>PUT (Update) a Product
-                    </button>
-                    <div class="collapse" id="collapsePut">
-                        <pre class="bg-light p-2 rounded"><code>curl -X PUT -H "Content-Type: application/json" -d '{"itemName": "Updated Item", "itemPrice": 15.50}' http://localhost:9090/api/products/1</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- GET /api/products/{id} -->
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>GET /api/products/{id}</span>
+      <button class="btn btn-sm btn-outline-primary" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapseGetById"
+        aria-expanded="false" aria-controls="collapseGetById">
+        Example
+      </button>
+    </div>
+    <div class="collapse" id="collapseGetById">
+      <div class="card-body">
+        <p>Retrieves a specific product by its unique ID.</p>
+        <div class="overflow-auto text-wrap w-100">
+          <pre class="mt-2"><code>curl -X GET http://localhost:9090/api/products/1</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST /api/products -->
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>POST /api/products</span>
+      <button class="btn btn-sm btn-outline-success" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapsePost"
+        aria-expanded="false" aria-controls="collapsePost">
+        Example
+      </button>
+    </div>
+    <div class="collapse" id="collapsePost">
+      <div class="card-body">
+        <p>Adds a new product. Provide details in JSON request body.</p>
+        <div class="overflow-auto text-wrap w-100">
+<pre class="mt-2"><code>curl -X POST -H "Content-Type: application/json" \
+-d '{
+  "itemId": "SKU-101",
+  "itemName": "New Gadget",
+  "itemQty": 50,
+  "itemPrice": 99.99,
+  "itemCategory": "Electronics"
+}' \
+http://localhost:9090/api/products</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUT /api/products/{id} -->
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>PUT /api/products/{id}</span>
+      <button class="btn btn-sm btn-outline-warning" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapsePut"
+        aria-expanded="false" aria-controls="collapsePut">
+        Example
+      </button>
+    </div>
+    <div class="collapse" id="collapsePut">
+      <div class="card-body">
+        <p>Updates details of an existing product by its ID.</p>
+        <div class="overflow-auto text-wrap w-100">
+<pre class="mt-2"><code>curl -X PUT -H "Content-Type: application/json" \
+-d '{
+  "itemName": "Updated Gadget",
+  "itemQty": 45,
+  "itemPrice": 95.50,
+  "itemCategory": "Tech"
+}' \
+http://localhost:9090/api/products/1</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE /api/products/{id} -->
+  <div class="card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>DELETE /api/products/{id}</span>
+      <button class="btn btn-sm btn-outline-danger" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapseDelete"
+        aria-expanded="false" aria-controls="collapseDelete">
+        Example
+      </button>
+    </div>
+    <div class="collapse" id="collapseDelete">
+      <div class="card-body">
+        <p>Removes a product by its unique ID.</p>
+        <div class="overflow-auto text-wrap w-100">
+          <pre class="mt-2"><code>curl -X DELETE http://localhost:9090/api/products/1</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
