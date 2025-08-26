@@ -13,13 +13,13 @@
                             C[pom.xml]:::config
                             D[Maven Plugins]:::config
                             E[Maven Dependencies]:::config
-                            F[SokoApp.jar]:::output
+                            F[SokoApplication.jar]:::output
                         end
 
                         A -->|executes| B
-                        B -->|reads build config from| C
+                        B -->|reads config from| C
                         C -->|manages| D & E
-                        B -->|generates| F
+                        B -->|builds and runs| F
 
                         classDef build fill:#D1E7DD,stroke:#28a745;
                         classDef config fill:#F8D7DA,stroke:#DC3545;
