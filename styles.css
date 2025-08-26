@@ -2,7 +2,6 @@
    THEME-AWARE BODY
    ================================ */
 body {
-    padding-bottom: 4.5rem; /* space for fixed navbar */
     background-color: var(--bs-body-bg);
     color: var(--bs-body-color);
 }
@@ -11,7 +10,7 @@ body {
    CODE BLOCKS
    ================================ */
 pre {
-    background-color: var(--bs-tertiary-bg); /* adapts with theme */
+    background-color: var(--bs-tertiary-bg);
     color: var(--bs-body-color);
     border-radius: 0.375rem;
     padding: 0.75rem;
@@ -22,7 +21,6 @@ pre {
     margin-bottom: 1rem;
 }
 
-/* Ensure <code> inside pre inherits styling */
 pre code {
     background: none;
     color: inherit;
@@ -30,13 +28,24 @@ pre code {
     padding: 0;
 }
 
-/* Inline code (outside pre) gets a subtle highlight */
 :not(pre) > code {
     background-color: var(--bs-tertiary-bg);
     color: var(--bs-body-color);
     border-radius: 0.25rem;
     padding: 0.2rem 0.4rem;
     font-family: var(--bs-font-monospace);
+}
+
+/* ================================
+   NAVBAR BUTTONS: IMPROVE CONTRAST
+   ================================ */
+:root[data-bs-theme="dark"] .btn-outline-secondary {
+    color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+:root[data-bs-theme="dark"] .btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
 /* ================================
@@ -82,7 +91,7 @@ pre code {
 }
 
 /* ================================
-   MERMAID DIAGRAMS
+   MERMAID DIAGRAMS (RED ARROWS IN DARK MODE)
    ================================ */
 .mermaid {
     background-color: var(--bs-body-bg) !important;
@@ -98,18 +107,32 @@ pre code {
     fill: var(--bs-body-color) !important;
 }
 
-/* Edges and connectors */
+/* Edges and connectors default to body color (reverted) */
 .mermaid .edgePaths path,
 .mermaid .edgePath path {
     stroke: var(--bs-body-color) !important;
 }
 
-/* Arrowheads / markers */
+/* Arrowheads / markers default to body color (reverted) */
 .mermaid path.arrowheadPath,
 .mermaid marker path,
 .mermaid .marker path {
     fill: var(--bs-body-color) !important;
     stroke: var(--bs-body-color) !important;
+}
+
+/* Dark mode: edge lines in red */
+:root[data-bs-theme="dark"] .mermaid .edgePath path {
+    stroke: var(--bs-danger) !important;
+    fill: none !important; /* prevent weird triangle fills */
+}
+
+/* Dark mode: arrowheads in red */
+:root[data-bs-theme="dark"] .mermaid path.arrowheadPath,
+:root[data-bs-theme="dark"] .mermaid marker path,
+:root[data-bs-theme="dark"] .mermaid .marker path {
+    stroke: var(--bs-danger) !important;
+    fill: var(--bs-danger) !important;
 }
 
 /* Node & cluster outlines */
@@ -127,7 +150,7 @@ pre code {
 }
 
 /* ================================
-   YOUR EXISTING MERMAID NODE COLORS
+   YOUR EXISTING MERMAID NODE COLORS (kept intact)
    ================================ */
 .mermaid .frontend rect {
     fill: #E0F7FA !important; /* light cyan */
@@ -170,20 +193,11 @@ pre code {
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
 }
-
 .fade-out {
     animation: fadeOut 0.5s ease-in-out forwards;
 }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to   { opacity: 0; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 
 /* ================================
    RESPONSIVE
